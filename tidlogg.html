@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="sv">
+<title>Tidlogg</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+</style>
+<body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Företagsnamn</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Hem</a>
+    <a href="#log" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Logga</a>
+    <a href="#report" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Min tidrapport</a>
+    <a href="#help" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Hjälp</a> 
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
+  <span>Företagsnamn</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:80px" id="showcase">
+    <h1 class="w3-jumbo"><b>Tidlogg</b></h1>
+  </div>
+
+    <!-- Log -->
+  <div class="w3-container" id="log" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Logga.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <form action="/action_page.php">
+      <!--SERVER SIDA!!!!
+          Click the "Submit" button and the form-data will be sent to a page on the server called "/action_page.php"
+      -->
+      <div class="w3-section">
+        <label>Projektnummer</label>
+        <input class="w3-input w3-border" type="text" name="projectnumber" id="input_projnr">
+      </div>
+      <div class="w3-section">
+        <label>Timmar</label>
+        <input class="w3-input w3-border" type="text" name="hours" required id="input_hrs">
+      </div>
+      <div class="w3-section">
+        <label>Minuter</label>
+        <input class="w3-input w3-border" type="text" name="minutes" id="input_min">
+      </div>
+      <div class="w3-section">
+        <label>Datum</label>
+        <input class="w3-input w3-border" type="text" name="date" id="input_date">
+      </div>
+      <button type="submit" onclick="log()" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">Logga</button>
+    </form>
+  </div>
+
+  <!-- Report -->
+  <div class="w3-container" id="report" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Min tidrapport.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>Nedan kan du se din inrapporterade tid.</p>
+    <p/>
+    <!--id="tbl_id" style="text-align:center" align="center" valign="top"-->
+    <table id="report_table" class="w3-table w3-striped w3-white">
+      <thead>
+          <tr>
+              <th>Projektnummer</th>
+              <th>Timmar</th>
+              <th>Datum</th>
+          </tr>
+      </thead>
+      <tr>
+        <td>P5962</td>
+        <td><i>8</i></td>
+        <td>2019-03-14</td>
+      </tr>
+      <tr>
+        <td>P5962</td>
+        <td><i>8</i></td>
+        <td>2019-03-15</td>
+      </tr>
+      <tr>
+        <td>P5962</td>
+        <td><i>6</i></td>
+        <td>2019-03-18</td>
+      </tr>
+      <tr>
+        <td>P5912</td>
+        <td><i>2</i></td>
+        <td>2019-03-18</td>
+      </tr>
+      <tr>
+        <td>P5912</td>
+        <td><i>4</i></td>
+        <td>2019-03-19</td>
+      </tr>
+      <tr>
+        <td>P5962</td>
+        <td><i>4</i></td>
+        <td>2019-03-19</td>
+      </tr>
+      <tr>
+        <td>P5962</td>
+        <td><i>8</i></td>
+        <td>2019-03-20</td>
+      </tr>
+      <tr>
+        <td>P5912</td>
+        <td><i>8</i></td>
+        <td>2019-03-21</td>
+      </tr>
+    </table>
+    <p> </p>
+    <div class="w3-row">
+      <button class="w3-button w3-red w3-padding-large w3-hover-black">Exportera till Excel</button>
+      <button class="w3-button w3-red w3-padding-large w3-hover-black">Klarmarkera månad</button>
+    </div>
+  </div>
+
+  <!-- Help -->
+  <div class="w3-container" id="help" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Hjälp.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>Som konsult är du själv ansvarig för att dina timmar rapporteras korrekt. Om du är osäker är det bara att höra av dig till din chef eller HR. Nedan listas några vanliga saker som är bra att tänka på.</p>
+    <p> All debiterbar tid måste ha ett ifyllt projektnummer. Semesteruttag ska INTE ha ett projektnummer, och rapporteras under tidkod 310. Dett avser både betald och obetald semester. Varje månad ska redovisas separat och klarmarkeras senast den 1:e av näsföljande månad. Kvitton och reseräkningar hanteras i separat system i SAP.</p>
+  </div>
+
+
+<!-- End page content -->
+</div>
+
+<!-- Footer -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Skapad av Miki Swahn</p></div>
+
+<script src="sidebar.js"></script>
+
+<script src="log.js"></script>
+
+<script src="dblog.js"></script>
+
+
+</body>
+</html>
